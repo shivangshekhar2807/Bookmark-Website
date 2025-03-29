@@ -8,7 +8,7 @@ function BookmarkList() {
     const ContextData = useContext(AllContext);
     const add = ContextData.Add;
     const Delete = ContextData.Delete;
-    const Edit = ContextData.Edit;
+    const Edit = ContextData.isEdit;
 
     useEffect(() => {
         const getHandler = async ()=>{
@@ -39,7 +39,7 @@ function BookmarkList() {
             }
         }
         getHandler();
-    },[add,Delete,Edit])
+    },[add,Delete])
 
     return (
     <Container className="mt-4">

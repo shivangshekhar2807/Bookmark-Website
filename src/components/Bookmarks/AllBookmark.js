@@ -1,8 +1,14 @@
+import { useState } from "react";
 import BookmarkForm from "./BookmarkForm";
 import BookmarkList from "./BookmarkList";
+import Loader from "./Loader";
 
 
 function AllBookmark() {
+  const [showLoader, setShowLoader] = useState(false)
+  
+  
+
   return (
     <>
       <div
@@ -12,7 +18,9 @@ function AllBookmark() {
           paddingTop: "0", 
         }}
       >
-        <BookmarkForm></BookmarkForm>
+        <BookmarkForm setShowLoader={setShowLoader}></BookmarkForm>
+       
+        {showLoader && <Loader></Loader>}
         <BookmarkList></BookmarkList>
       </div>
     </>

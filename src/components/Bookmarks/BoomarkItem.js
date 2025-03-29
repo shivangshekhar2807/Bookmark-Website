@@ -7,26 +7,15 @@ function BookmarkItem({ item }) {
 
     const ContextFunction = useContext(AllContext);
 
-    async function EditHandler() {
+    function EditHandler() {
         ContextFunction.EditBookmark({
             title: item.title,
             url:item.url,
+          id: item.id,
         })
+      ContextFunction.isEditbookmark(true);
 
-          try {
-            const deleteDataResponse = await fetch(`https://movies-e-commerce-default-rtdb.firebaseio.com/Bookmark/${item.id}.json`, {
-                method:'DELETE'
-            })
-            if (!deleteDataResponse.ok) {
-                throw new Error(deleteDataResponse.error)
-            }
-            else {
-                ContextFunction.DeleteBookmark(item.id);
-            }
-        }
-        catch (error) {
-            alert(error.message);
-        }
+       
         
     }
 
